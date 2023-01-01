@@ -1,0 +1,17 @@
+spark Broadcast join
+
+val peopleDF=seq(("andrea","medellin"),
+                 ("roddfo","medellin"), 
+                 ("abdul","banglore")). 
+                 toDF("firstname","city")
+peopleDF.show()
+val citiesDF=Seq(("medellin","colombia",2.5),
+                 ("banglore","india",12.3).
+                  toDF("city","country","population")
+citiesDF.show()
+peopleDF.join(broadcast(citiesDF),people("city")<=>citiesDF("city")).explain()
+
+eliminating the duplicate city column
+
+
+peopleDF.join(broadcast(citiesDF),people("city")<=>citiesDF("city")).drop(citiesDF("city")).explain()
