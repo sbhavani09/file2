@@ -1,0 +1,3 @@
+import spark.sqlContext.implicits._
+
+var readcsv=spark.option("header","true").option("delimeter","|").option("escape"," ").csv("sparkdata/sample.csv").show()
