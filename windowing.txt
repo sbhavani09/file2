@@ -1,0 +1,17 @@
+windowing 
+
+simpleData=Seq(("James","Sales",3000),
+("Michal","Sales",4600),
+("Robert","Sales",4100),
+("Maria","Finance",3000),
+("James","Sales",3000),
+("Scott","Finance",3300),
+("Jen,"Finance",3900),
+("Jeff","Marketing",3000),
+("Kumar","Marketing",2000),
+("Saif","Sales",4100))
+
+val simpleDF=SimpleData.toDF("empname","dept","sal")
+simpleDF.show()
+val windowSpc=Window.partitionBy("dept").orderBy("Sal")
+SimpleDF.withcolumn("row_number",row_number.over(windowSpc)).show()
